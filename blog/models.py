@@ -4,9 +4,9 @@ from django.db import models
 
 class MessagePost(models.Model):
 	# Модель для поста 
-	name = models.CharField(max_length=100, blank=True, null=True, default=None)
-	userpost = models.TextField(blank=True, null=True, default=None)
-	image = models.ImageField(null=True, upload_to='media/')
+	name = models.CharField(max_length=100, null=True, default=None)
+	userpost = models.TextField(null=True, default=None)
+	image = models.ImageField(null=True, upload_to='media/', blank=True)
 	create = models.DateTimeField(auto_now_add=True, auto_now=False)
 
 	def __str__(self):

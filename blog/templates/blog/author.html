@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<style>
+   		.link_style {
+   			display: inline-block; 
+   			background: green; 
+    		color: #fff; 
+    		padding: 8px 15px; 
+    		text-decoration: none; 
+    		border-radius: 3px; 
+   		}
+   	</style>
+</head>
+<body>
+	<div class="conteiner">
+		<div class="row">
+			<div class="col-lg-6">
+				<div style="margin-left: 50px; margin-top: 50px;">
+					<h1>ПОСТЫ</h1>
+				</div>
+				{% for post in posts %}
+					<div style="margin-top: 20px; background-color: lightgrey; margin-left: 50px; border-radius: 5px; border-radius: 10px;">
+						<div style="margin: 5px 5px 5px 5px;">
+							{% if post.image %}
+								<div>
+									<img src="{{ post.image.url }}" class="img-responsive" style="height:200px; width: 200px;">
+								</div>
+							{% endif %}
+							<div>
+								<h3>
+									<a href="{% url 'author' post.name %}">{{ post.name }}</a>
+								</h3>
+							</div>
+							<div>
+								<h4>{{ post.userpost }}</h4>
+							</div>
+							<div style="text-align: right;"> 
+								<h6>{{ post.create }}</h6>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="col-lg-6">
+				<div style="margin-top: 100px; margin-left: 50px;">
+					<a href="/" style="background: grey; margin-top: 30px; margin-left: 30px;" class="link_style">Вернуться на главную</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>

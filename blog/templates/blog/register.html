@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<style>
+   		a {
+   			display: inline-block; 
+   			background: green; 
+    		color: #fff; 
+    		padding: 8px 15px; 
+    		text-decoration: none; 
+    		border-radius: 3px; 
+   		}
+   	</style>
+</head>
+<body>
+	{% if messages %}
+		{% for message in messages %}
+			{% if message.tags == 'error' %}
+				<div class="alert alert-danger" role="alert">
+					{{ message }}
+				</div>
+			{% else %}
+				<div class="alert alert-{{ message.tags }}" role="alert">
+					{{ message }}
+				</div>
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+	<h1 style="margin-left: 30px; margin-top: 30px;">
+		РЕГИСТРАЦИЯ
+	</h1>
+	<form method="post" style="margin-left: 30px; margin-top: 30px;">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit" class="btn btn-primary">Зарегестрироваться</button>
+	</form>
+	<a href="/" style="background: grey; margin-top: 30px; margin-left: 30px;" class="link_style">Вернуться на главную</a>
+</body>

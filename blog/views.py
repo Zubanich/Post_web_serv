@@ -67,9 +67,11 @@ def blog(request):
 
 	return (render(request, 'blog/blog.html', locals())) 
 
-def author(request, author_name):
+def author(request, author_id):
 	posts = MessagePost.objects.all()
-	posts = posts.filter(name=author_name)
+	posts = posts.filter(id=author_id)
+	name = posts[0].name
+	all_posts_author = MessagePost.objects.filter(name=name)
 	return render(request, 'blog/author.html', locals())
 
 def formpost(request):
